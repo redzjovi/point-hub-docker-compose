@@ -36,5 +36,5 @@ My custom and favorite
 
 ```bash
 docker-compose down && docker-compose up -d
-docker-compose down && docker-compose up -d mysql
+docker-compose down && docker-compose up -d mysql nginx
 ```
