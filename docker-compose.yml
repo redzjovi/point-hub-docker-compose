@@ -16,6 +16,15 @@ services:
       - 3306:3306
     volumes:
       - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./log/nginx:/var/log/nginx
+      - ../:/var/www
 
 volumes:
   mysql:
