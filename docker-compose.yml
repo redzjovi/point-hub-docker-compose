@@ -19,11 +19,21 @@ services:
   nginx:
     build:
       context: ./nginx
+    depends_on:
+      - php-fpm
     ports:
       - 80:80
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./log/nginx:/var/log/nginx
+      - ../:/var/www
+  php-fpm:
+    build:
+      context: ./php-fpm
+      args:
+        - INSTALL_GRPC:${PHP_FPM_INSTALL_GRPC}
+    volumes:
+      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
       - ../:/var/www
 
 volumes:
